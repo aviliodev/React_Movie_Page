@@ -14,9 +14,53 @@ Es posible que no funcionen los comandos para crear archivos desde la terminal, 
 5. Instalar BABEL (no me funcionó en la terminal de windows asi que usé la terminal Cmder)
 =>      npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
 6. crear el archivo .babelrc en la carpeta public, y colocar esto en su interior:
-{
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ]
-  } 
+  {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+      ]
+    } 
+7. instalar webpack
+=>      npm install webpack webpack-cli html-webpack-plugin html-loader --save-dev
+8. crear archivo configuración webpack.config.js en la raiz y colocarle esto adentro:
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+  module.exports = {
+    entry: './src/index.js',
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.js',
+    },
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+          },
+        },
+        {
+          test: /\.html$/,
+          use: {
+            loader: 'html-loader',
+          },
+        },
+      ],
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './public/index.html',
+        filename: './index.html',
+      }),
+    ],
+  };
+9. Instalar servidor de Webpack y visualizar los cambios en tiempo real 
+=>      npm install --save-dev webpack-dev-server
+10. agregalos lo siguiente a la parte de scripts en el archivo package.json:
+  "build": "webpack --mode production",
+  "start": "webpack serve --mode development --env development"

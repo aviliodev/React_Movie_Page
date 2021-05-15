@@ -24,3 +24,7 @@ git add .
 
 Para hacer commit a todos los cambios:
 git commit -m "Descripción de este commit"
+
+Para enviar archivos al repositorio remoto (PUSH)
+git push origin "nombre rama"
+git push origin "main"
