@@ -197,3 +197,16 @@ Es posible que no funcionen los comandos para crear archivos desde la terminal, 
   # Docs Custom
   .cache/
   yarn-error.log
+
+18. Este paso no es tan necesario, es para instalar un loader de imágenes para este proyecto de ejemplo, peor no siempre se ocupará.
+=>      npm install --save-dev file-loader
+19. Este es parte del paso 18. Agregar nueva regla al webpack.config.js
+  {
+    test: /\.(png|gif|jpg)$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: { name: 'assets/[hash].[ext]' },
+      }
+    ],
+  },
