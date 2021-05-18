@@ -381,3 +381,4 @@ Es posible que no funcionen los comandos para crear archivos desde la terminal, 
 =>      npm install json-server -g
 22. Una vez instalado el json-server, para iniciarlo (hayq ue estar ubicado en la carpeta del archivo json) se hace con el comando siguiente:
 =>      json-server nombrearchivoParaTuAPI.json
+        json-server initialState.json
