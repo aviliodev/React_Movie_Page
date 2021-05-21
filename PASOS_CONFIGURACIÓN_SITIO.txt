@@ -379,8 +379,24 @@ Es posible que no funcionen los comandos para crear archivos desde la terminal, 
 21. Instalar json server, que servirá paar simular apis despues. Esto se hace desde la terminal
     pero en modo administrador, si no no funciona:
 =>      npm install json-server -g
-22. Una vez instalado el json-server, para iniciarlo (hayq ue estar ubicado en la carpeta del archivo json) se hace con el comando siguiente:
+22. Una vez instalado el json-server, para iniciarlo (hay que estar ubicado en la carpeta del archivo json) se hace con el comando siguiente:
 =>      json-server nombrearchivoParaTuAPI.json
         json-server initialState.json
+
 23. Instalar Proptypes:
 = >     npm install --save prop-types
+24. 
+
+==================================== FIN CONFIGURACIÓN PARA REACT ====================================
+
+====================================INICIO REACT ROUTER Y REDUX ======================================
+
+1. instalar React Router, la librería que nos va a permitir manejar rutas dentro de nuestra aplicación:
+=>      npm install react-router-dom --save
+2. Debemos modificar nuestra configuración del entorno de desarrollo local para que pueda funcionar con el uso de rutas, 
+   debemos ir al archivo webpack.config.js y añadir este fragmento de código antes de plugins:
+
+    devServer: {  
+      historyApiFallback: true,  
+    },    
+    

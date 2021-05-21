@@ -7,6 +7,7 @@ git checkout "nombre rama"
 Crear rama y posicionarse en ella:
 git checkout -b "nombre rama"
 git checkout -b "main"
+git checkout -b feature/router-redux
 
 Añadir repositorio remoto:
 git remote add origin https://github.com/aviliodev/React_Movie_Page.git
@@ -28,3 +29,4 @@ git commit -m "Descripción de este commit"
 Para enviar archivos al repositorio remoto (PUSH)
 git push origin "nombre rama"
 git push origin "main"
+

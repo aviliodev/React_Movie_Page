@@ -45,6 +45,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
           },
       ],
     },
+    devServer: {  
+      historyApiFallback: true,  
+    },
     plugins: [
       new HtmlWebpackPlugin({
         template: './public/index.html',
