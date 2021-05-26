@@ -396,7 +396,7 @@ Es posible que no funcionen los comandos para crear archivos desde la terminal, 
 2. Debemos modificar nuestra configuración del entorno de desarrollo local para que pueda funcionar con el uso de rutas, 
    debemos ir al archivo webpack.config.js y añadir este fragmento de código antes de plugins:
 
-    devServer: {  
-      historyApiFallback: true,  
+    devServer: {
+        historyApiFallback: true,
     },    
     

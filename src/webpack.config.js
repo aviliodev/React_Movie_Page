@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.js',
+      publicPath: '/'
     },
     resolve: {
       extensions: ['.js', '.jsx'],
@@ -45,8 +46,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
           },
       ],
     },
-    devServer: {  
-      historyApiFallback: true,  
+    devServer: {
+      historyApiFallback: true,
     },
     plugins: [
       new HtmlWebpackPlugin({
