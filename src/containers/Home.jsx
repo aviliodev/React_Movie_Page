@@ -1,34 +1,30 @@
 import React, {useState, useEffect} from 'react'
+import {connect} from 'react-redux'
 // import Header from '../components/Header'
 import Search from '../components/Search'
 import Categories from '../components/Categories'
 import Carousel from '../components/Carousel'
 import CarouselItem from '../components/CarouselItem'
 // import Footer from '../components/Footer'
-import useInitialState from '../hooks/useInitialState'
+// import useInitialState from '../hooks/useInitialState'
 import '../assets/styles/App.scss'
 
-const API = 'http://localhost:3000/initialState/'
+// const API = 'http://localhost:3000/initialState/'
 
-// const App = () => (
-//     <div className="">
-//           <Header></Header>  
-//     </div>
+// Gracias a connect y mapStateToProps que están más abajo, los elementos mylist, trends y originals estan disponibles para ser recibidos como parámetros en Home
+const Home = ({mylist, trends, originals}) => {
 
-// )
+    // const initialState = useInitialState(API)
 
-const Home = () => {
-
-    const initialState = useInitialState(API)
-
-    return initialState.length === 0 ? <h1>Loading...</h1> : (
+    // return initialState.length === 0 ? <h1>Loading...</h1> : (
+    return (
             <>
                 <Search />
 
-                {initialState.mylist?.length > 0 && 
+                {mylist?.length > 0 && 
                     <Categories title="Mi Lista"> 
                         <Carousel>
-                            {initialState.mylist.map(item =>
+                            {mylist.map(item =>
                                 <CarouselItem key={item.id} {...item} />
                             )}          
                         </Carousel>
@@ -38,7 +34,7 @@ const Home = () => {
 
                 <Categories title="Tendencias">
                     <Carousel>
-                        {initialState.trends?.map(item =>
+                        {trends?.map(item =>
                             <CarouselItem key={item.id} {...item}/>
                         )}
                                     
@@ -47,7 +43,7 @@ const Home = () => {
 
                 <Categories title="Originales de Platfix">
                     <Carousel>
-                    {initialState.originals?.map(item =>
+                    {originals?.map(item =>
                         <CarouselItem key={item.id} {...item} />
                     )}
                     </Carousel>
@@ -56,4 +52,16 @@ const Home = () => {
         )
 }
 
-export default Home
+// Se crea la funcion mapStateToProps para tomar solo los elementos que necesito del state
+const mapStateToProps = (state) => {
+    return {
+        mylist: state.mylist,
+        trends: state.trends,
+        originals: state.originals,
+    }
+}
+
+// export default Home
+
+// Mediante connect, nos conectamos al state disponible para toda la aplicación que se envia mediante el provider (ver src/index.js)
+export default connect(mapStateToProps,null)(Home)

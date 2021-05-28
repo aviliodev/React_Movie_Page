@@ -398,5 +398,7 @@ Es posible que no funcionen los comandos para crear archivos desde la terminal, 
 
     devServer: {
         historyApiFallback: true,
-    },    
+    },
+3. Instalar Redux:
+=>      npm install redux react-redux --save    
     
