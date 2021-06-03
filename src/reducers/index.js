@@ -17,7 +17,17 @@ const reducer = (state,action) => {
                 ...state,
                 mylist: state.mylist.filter(items => items.id !== action.payload)
                 // El método filter() crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada.
-            }            
+            }
+        case 'LOGIN_REQUEST':
+            return {
+                ...state,
+                user: action.payload,
+            }
+        case 'LOGOUT_REQUEST':
+            return {
+                ...state,
+                user: action.payload,
+            }
             
         default:
             return state;

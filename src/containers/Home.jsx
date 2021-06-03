@@ -69,3 +69,6 @@ const mapStateToProps = (state) => {
 
 // Mediante connect, nos conectamos al state disponible para toda la aplicación que se envia mediante el provider (ver src/index.js)
 export default connect(mapStateToProps,null)(Home)
+// La función connect recibe dos parámetros mapStateToProps y mapDispatchToProps
+
+// En palabras resumidas, la primera solicita datos del store(la base de datos) y el segundo envía datos.
