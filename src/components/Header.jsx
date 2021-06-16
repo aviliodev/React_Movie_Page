@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import classNames from 'classnames'
 import gravatar from '../utils/gravatar'
 import {LogoutRequest} from '../actions'
 import {connect} from 'react-redux'
@@ -9,7 +10,7 @@ import userIcon from '../assets/static/user-icon.png'
 
 const Header = (props) => {
 
-  const {user} = props
+  const {user, isLogin, isRegister} = props
 
   const hasUser = Object.keys(user).length > 0 //para captar los elementos tiene un objeto: Object.keys
   
@@ -17,8 +18,13 @@ const Header = (props) => {
     props.LogoutRequest({})
   }
 
+  const headerClass = classNames('header', {
+    isLogin,
+    isRegister,
+  })
+
   return (
-      <header className="header">
+      <header className={headerClass}>
       <Link to="/">
         <img className="header__img" src={logo} alt="Platzi Video"/>
       </Link>

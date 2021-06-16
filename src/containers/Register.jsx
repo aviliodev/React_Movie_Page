@@ -1,8 +1,16 @@
+// Indico que este componente va a tener estado propio
 import React , {useState} from 'react'
+// 1. Importar modulo para conectar el componente con el store
+import {connect} from 'react-redux'
+import Header from '../components/Header'
+// 2. Importar las acciones a ejecutar en el store a través de este componente
+import {registerRequest} from '../actions'
 import {Link} from 'react-router-dom'
 import '../assets/styles/components/Register.scss'
 
-const Register = () => {
+// 5. El componente ejecuta acciones contra el store, por tanto activo sus props
+const Register = (props) => {
+  // Declaro el estado inicial del componente (la propiedad form representa toda el formulario, por ello le paso un objeto con el valor de inicio de cada uno de sus campos)
   const [form, setValues] = useState({
     email: '',
     name: '',
@@ -10,19 +18,26 @@ const Register = () => {
 
   })
 
+  // Funcion controladora de evento que se dispara cuando uno de los campos de formulario cambia su valor. (onChange)
   const handleInput = (event) => {
+    // Establezco el nuevo estado del componente segun los valores actuales de cada input, pero conservando los anteriores (destructuración)3
     setValues({
       ...form,
       [event.target.name]: event.target.value,
     });
   }
-
+  // Función controladora de evento que se ejecuta tras dispararse el envio del formulario
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form);
+    // 6. Disparamos la acción registrar el usuario en el store
+    props.registerRequest(form)
+    // Redireccionar a otra ruta.
+    props.history.push('/')
   }
   
   return (
+    <>
+      <Header isRegister/>
       <section className="register">
         <section className="register__container">
           <h2>Regístrate</h2>
@@ -53,7 +68,15 @@ const Register = () => {
           <Link to="/Login">Iniciar sesión</Link>
         </section>
       </section>
+    </>
+
   )
 }
 
-export default Register
+// 4. Establecer que acciones llevará a cabo este componente en el store
+const mapDispatchToProps = {
+  registerRequest,
+}
+
+// 3. Conectar el componente con el store
+export default connect(null,mapDispatchToProps) (Register)

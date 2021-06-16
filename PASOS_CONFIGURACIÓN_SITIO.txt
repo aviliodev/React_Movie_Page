@@ -403,4 +403,6 @@ Es posible que no funcionen los comandos para crear archivos desde la terminal, 
 =>      npm install redux react-redux --save    
 4. instalar MD5 (se usará para Gravatar)
 =>      npm install md5 --save
+5. Instalar classnames para hacer validaciones
+=>      npm install classnames --save
     

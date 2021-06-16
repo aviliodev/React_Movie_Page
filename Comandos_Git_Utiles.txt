@@ -12,6 +12,9 @@ git checkout -b feature/router-redux
 Añadir repositorio remoto:
 git remote add origin https://github.com/aviliodev/React_Movie_Page.git
 
+Cambiar le repositorio existente:
+git remote set-url origin https://github.com/aviliodev/webpersonal.git
+
 Para ver repositorio remoto añadido:
 git remote -v
 
